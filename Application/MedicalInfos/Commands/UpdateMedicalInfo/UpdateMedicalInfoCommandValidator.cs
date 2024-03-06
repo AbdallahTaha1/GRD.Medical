@@ -12,17 +12,27 @@ namespace Application.MedicalInfos.Commands.UpdateMedicalInfo
     {
         public UpdateMedicalInfoCommandValidator(IApplicationDbContext context)
         {
-            RuleFor(c => c.Age)
+            When(c => c.Age != null, () =>
+            {
+                RuleFor(c => c.Age)
                  .GreaterThan(0)
                  .WithMessage("The value must be greater than 0.");
+            });
 
-            RuleFor(c => c.Hight)
+            When(c => c.Hight != null, () =>
+            {
+                RuleFor(c => c.Hight)
                  .GreaterThan(0)
                  .WithMessage("The value must be greater than 0.");
+            });
 
-            RuleFor(c => c.Wight)
+            When(c => c.Wight != null, () =>
+            {
+                RuleFor(c => c.Wight)
                  .GreaterThan(0)
                  .WithMessage("The value must be greater than 0.");
+            });
+            
         }
     }
 }

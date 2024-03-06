@@ -1,7 +1,6 @@
 ﻿global using Domain.Entities;
 global using MediatR;
 global using AutoMapper;
-global using Domain.Entities;
 global using Domain.Events;
 global using Domain.Enums;
 global using Application.Common.Validators;
