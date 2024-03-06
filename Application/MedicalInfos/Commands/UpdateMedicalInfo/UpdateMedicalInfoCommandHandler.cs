@@ -44,20 +44,20 @@ namespace Application.MedicalInfos.Commands.UpdateMedicalInfo
                 Hypertension = request.Hypertension,
                 Hypotension = request.Hypotension,
                 Smoker = request.Smoker,
-                UserId = _currentUser.Id.Value
+                UserId = _currentUser.Id
             };
             medicalInfo.AddDomainEvent(new EntityCreatedEvent(medicalInfo));
             _context.MedicalInfos.Add(medicalInfo);
         }
         private void UpdateMedicalInfo(UpdateMedicalInfoCommand request, MedicalInfo medicalInfo)
         {
-            medicalInfo.Age = request.Age;
-            medicalInfo.Hight = request.Hight;
-            medicalInfo.Wight = request.Wight;
-            medicalInfo.Diabetic = request.Diabetic;
-            medicalInfo.Hypertension = request.Hypertension;
-            medicalInfo.Hypotension = request.Hypotension;
-            medicalInfo.Smoker = request.Smoker;
+            if(request.Age != null) medicalInfo.Age = request.Age;
+            if (request.Hight != null) medicalInfo.Hight = request.Hight;
+            if (request.Wight != null) medicalInfo.Wight = request.Wight;
+            if (request.Diabetic != null) medicalInfo.Diabetic = request.Diabetic;
+            if (request.Hypertension != null) medicalInfo.Hypertension = request.Hypertension;
+            if (request.Hypotension != null) medicalInfo.Hypotension = request.Hypotension;
+            if (request.Smoker != null) medicalInfo.Smoker = request.Smoker;
 
             medicalInfo.AddDomainEvent(new EntityUpdatedEvent(medicalInfo));
         }
